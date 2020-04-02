@@ -1,6 +1,6 @@
 <template>
-	<div v-if="dependenciesSatisfied">
-		<div v-for="childField in field.fields">
+	<keep-alive v-if="dependenciesSatisfied">
+		<template v-for="childField in field.fields">
 			<component
 				:is="'detail-' + childField.component"
 				:resource-id="resourceId"
@@ -8,8 +8,8 @@
 				:field="childField"
 				:ref="'field-' + childField.attribute"
 			/>
-		</div>
-	</div>
+		</template>
+	</keep-alive>
 </template>
 
 <script>
